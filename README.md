@@ -118,7 +118,7 @@ We then turned to the minimal [pyCA](https://github.com/opencast/pyCA) software.
   * pyCA for capturing
     * custom shell script to handle the capturing of the inputs with ffmpeg. This script also checks that the magewell inputs are configured correctly.
   * shell script that keeps disk usage in check: try to have 100 Gbyte of free disk space, but always keep at least the last 3 recordings for desaster recovery. This script is triggered every 2 hours (usually in between recordings) via systemd.
-  * shell script that starts ffmpeg with a picture-in-picutre video mix for livestreaming to our Wowza server. The lifecycle of this script is managed via systemd.
+  * [shell script](https://raw.githubusercontent.com/learnweb/capture-agents/master/livestream.sh) that starts ffmpeg with a picture-in-picutre video mix for livestreaming to our Wowza server. The lifecycle of this script is managed via systemd.
   * shell script that checks against our central livestream service if the livestream should be active or not.
   * Configure camera security and add to snmp checks to Zabbix
 
