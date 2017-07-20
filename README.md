@@ -1,6 +1,6 @@
 # eLectures Capture Agents
 
-This repository documents the various versions of capture agents that the University of Münster uses to capture and livestream lectures for the [eLectures project](https://https://www.uni-muenster.de/studium/orga/electures.html.
+This repository documents the various versions of capture agents that the University of Münster uses to capture and livestream lectures for the [eLectures project](https://https://www.uni-muenster.de/studium/orga/electures.html).
 
 ## TOC
 
