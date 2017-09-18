@@ -88,7 +88,7 @@ In a lot of rooms the space requirements were even more strict, so we had to qui
 * SuperMicro X11SSL-F (mini-itx, socket 1151)
 * Intel Xeon E3-1240Lv5 (25 watt tdp)
 * Supermicro SNK-P0046P CPU cooler (passive)
-* SuperMicro Superchassis 504-203B (1HE, 25cm depth, 200w PSU)
+* SuperMicro Superchassis CSE-510-203B (1HE, 25cm depth, 200w PSU)
   * The included fans are quite loud. Of the three fans we are only using one fan to keep the noise down as much as possible. Temperatures are high, but sustainable.
 * 240 Gbyte Intel 540s SSD
 * 16 Gbyte DDR4 RAM Kit
