@@ -8,8 +8,10 @@ This repository documents the various versions of capture agents that the Univer
 * [System Requirements](#system-requirements)
 * [Hardware](#hardware)
   * [Version 1](#version-1)
-  * [Version 1a](#version-1a)
-  * [Version 1b](#version-1b)
+    * [Version 1.0](#version-1.0)
+    * [Version 1.1](#version-1.1)
+  * [Version 2](#version-2)
+    * [Version 2.1](#version-2.1)
 * [Software](#software)
 * [Networking](#networking)
 * [Notes](#notes)
@@ -66,7 +68,7 @@ This configuration worked pretty well, but we soon noticed that the software sup
 
 The remote management capability paid off, the capture agents are running very silent, cool and rock stable.
 
-### Version 1a
+### Version 1.0
 
 After the first semester has passed, we saw a post on the Opencast Users mailing list, mentioning the Magewell capture cards. After a quick inspection these cards seemed to provide a remedy for all our problems:
 
@@ -77,7 +79,7 @@ After the first semester has passed, we saw a post on the Opencast Users mailing
 
 So, for the next round of capture agents we replaced the Blackmagic Design DeckLink Mini Recorder and the Soundblaster soundcard with a Magewell Pro Capture HDMI capture card.
 
-### Version 1b
+### Version 1.1
 
 We replaced the Blackmagic Design and Soundblaster cards with a Magewell Pro Capture HDMI capture card. This capture card has an integrated hardware input scaler and an analog audio input. The driver provides a standard V4L2 interface that allows multiple processes capture from the device. Although it costs a tiny bit more overall, it's well worth the money.
 
@@ -86,14 +88,14 @@ We replaced the Blackmagic Design and Soundblaster cards with a Magewell Pro Cap
 In a lot of rooms the space requirements were even more strict, so we had to quickly come up with an even smaller solution. For this we settled on:
 
 * SuperMicro X11SSL-F (mini-itx, socket 1151)
-* Intel Xeon E3-1240Lv5 (25 watt tdp)
+* Intel Xeon E3-1240Lv5 (25 watt tdp) (*note: deprecated! see version 2.1*)
 * Supermicro SNK-P0046P CPU cooler (passive)
 * SuperMicro Superchassis CSE-510-203B (1HE, 25cm depth, 200w PSU)
   * The included fans are quite loud. Of the three fans we are only using one fan to keep the noise down as much as possible. Temperatures are high, but sustainable.
 * 240 Gbyte Intel 540s SSD
 * 16 Gbyte DDR4 RAM Kit
 * Magewell Pro Capture HDMI
-* Axis P1428-E
+* Axis P1428-E (*note: deprecated! see version 2.1*)
 
 This is a really powerful hardware combination in a very small form factor. This also means that it runs quite a bit hotter (up to 75°c on CPU load, 35°c idle) than version 1, and makes more noise. This is on the verge of being tolerable.
 
@@ -102,6 +104,20 @@ In the next few weeks we will investigate replacing the 40mm fan with multiple n
 We noticed that we do not really that much local disk space, so we reduced the SSD size. RAM is cheap, so we kept the 16 GByte for future use.
 
 Because this version can only take one capture card we're a bit more limited in how many inputs this capture agent can process. Luckily it's a full-height slot, so if you would really need to you can install a quad-capture card from Magewell and some external USB soundcard for audio capture, or inject audio into the hdmi signals.
+
+### Version 2.1
+
+#### Intel Xeon E3-1240v6
+
+Because we experienced a severe shortage of e3-1240Lv5 CPUs, we had to improvise - we are now using Intel Xeon E3-1240v6 CPUs - note the omitted "L" in the name. These are regular CPUs with much higher TDP than the L variants, but also higher clock speeds. Sourcing these from various distributors seems to be much easier than the less-common L variants. Of course this would lead to thermal issues in such a small case with such a small cooler, so we __limited the maximum TDP in the BIOS settings__. With that, these behave essentially equivalent to the L variants, but allow short boosts with more processing power. In real life applications, this does not make much of a difference though.
+
+If you have the space available, we recommend that you build version 2.1 with the Case, Fans, PSU and CPU Cooler of version 1. This will allow you to make much more use of the available processing power and allow for better thermals with less noise.
+
+#### Axis P1448-LE
+
+The previously used P1428-E is deprecated and replaced by the much better P1448-LE camera. We _highly_ recommend that you only buy the newer P1448-LE. There are very obious improvements in picture quality (especially in low light situations) and the cameras now accept an analog audio input (might be of interest for camera-only seminar rooms with virtualized pyCA).
+
+They behave very much the same as the P1428-E in this application, but provide a newer web interface (easier to navigate and estup) and __moved the tracking stream id from 2 to 8__, which is important for the capture script.
 
 ## Software
 
